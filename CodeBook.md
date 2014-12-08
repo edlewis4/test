@@ -10,8 +10,9 @@ Sensor data and other calculations were collected. The obtained dataset was rand
 
 This process run_analysis.R will read in the raw data and output a tidy dataset of the average of the measurements that involved `mean()` mean or `std()` standard deviation summarized by Activity and subject number
 
-## Raw data is: 
-Source zip located : `https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip`
+## Raw data: 
+Source zip file is located here : 
+https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
 
 For each record the following data was provided:
 * Triaxial acceleration from the accelerometer (total acceleration) and the estimated body acceleration.
@@ -53,39 +54,44 @@ Reads in activity & feature labels datasets
 * `./data/UCI HAR Dataset/activity_labels.txt`      store in `activitylabels` data.frame
 * `./data/UCI HAR Dataset/features.txt`             store in `featurelabels` data.frame
 
+#### Subsetting data - Choosing only variables with std() and mean()
 converts the `featurelabels` data.frame to a data.table to select necessary mean and std columns
 subset that data.table to get only those variables that have std() or mean() in the feature name
 
 create subset of training `trainx` and test subjects`testx` datasets- only keeping columns that have std() or mean() data as determined above with the data.table subsetting.
 
+#### Merge data
 Merge all of the Train dataframes into one and set column names - stores in `train` data.frame
 Merge all of the Test datasets into one and set column names  - stores in `test` data.frame
 
 Merge the `test` and `train` dataframes
 
+#### Making data descriptive
 Use data pulled from the activity_labels.txt file into activitylabels table to change values from numbers to Descriptive activities 
 
+#### Create final summary data.frame with tidy data
 Temporarily makes a long form tidy dataset with Subject_num and Activiy - with all other observations under a variable / value  - Stores in `result` data.frame
 
 Create summary by Subject_num and Activity and the mean of all features
 
-Covert Acitivy back to a Factor 
-###### Activity is a factor with 6 levels 
-* WALKING
-* WALKING_UPSTAIRS
-* WALKING_DOWNSTAIRS
-* SITTING
-* STANDING
-* LAYING
+Convert Activity back to a Factor 
+      ###### Activity is a factor with 6 levels 
+      * WALKING
+      * WALKING_UPSTAIRS
+      * WALKING_DOWNSTAIRS
+      * SITTING
+      * STANDING
+      * LAYING
 
-Write final summary table to output file - Sample output shown below
+## Write tidy data.frame to output file
+Write final summary table `result` to output file - Sample output shown below
 ```{r}
 > head(result[1:6,1:6])
   Subject_num           Activity tBodyAcc-mean()-X tBodyAcc-mean()-Y tBodyAcc-mean()-Z
-1           1             LAYING         0.2215982      -0.040513953        -0.1132036
-2           1            SITTING         0.2612376      -0.001308288        -0.1045442
-3           1           STANDING         0.2789176      -0.016137590        -0.1106018
-4           1            WALKING         0.2773308      -0.017383819        -0.1111481
-5           1 WALKING_DOWNSTAIRS         0.2891883      -0.009918505        -0.1075662
-6           1   WALKING_UPSTAIRS         0.2554617      -0.023953149        -0.0973020
+           1             LAYING         0.2215982      -0.040513953        -0.1132036
+           1            SITTING         0.2612376      -0.001308288        -0.1045442
+           1           STANDING         0.2789176      -0.016137590        -0.1106018
+           1            WALKING         0.2773308      -0.017383819        -0.1111481
+           1 WALKING_DOWNSTAIRS         0.2891883      -0.009918505        -0.1075662
+           1   WALKING_UPSTAIRS         0.2554617      -0.023953149        -0.0973020
 ```
