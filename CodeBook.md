@@ -59,9 +59,9 @@ Converts the `featurelabels` data.frame to a data.table to select necessary mean
 Subset that data.table to get only those variables that have `std()` or `mean()` in the feature name<br>
 
 ###### Determining which variables to keep that referenced mean() or std()
-I kept any variablues that contained the mean() or std() within the name.  e.g `tBodyAcc-mean()-X` , `tBodyAcc-std()-Y`, `tBodyAccJerk-std()-X`, `fBodyAccJerk-mean()-Z`, ...
+```I kept any variablues that contained the mean() or std() within the name.  e.g `tBodyAcc-mean()-X` , `tBodyAcc-std()-Y`, `tBodyAccJerk-std()-X`, `fBodyAccJerk-mean()-Z`, ...
 
-I did not to keep variables that just had the word mean in them that were used for other calculations.  e.g `angle(tBodyAccMean,gravity)`, `angle(tBodyAccJerkMean),gravityMean)`, `fBodyBodyGyroMag-meanFreq()`, `fBodyAccMag-meanFreq()`, ...
+I did not to keep variables that just had the word mean in them that were used for other calculations.  e.g `angle(tBodyAccMean,gravity)`, `angle(tBodyAccJerkMean),gravityMean)`, `fBodyBodyGyroMag-meanFreq()`, `fBodyAccMag-meanFreq()`, ...```
 
 
 Created subset of training `trainx` and test subjects`testx` datasets- only keeping columns that have `std()` or `mean()` data as determined above with the data.table subsetting.
