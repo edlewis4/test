@@ -1,10 +1,37 @@
 
 # CodeBook.md
-###### This code book documents the code inside the R program - run_analysis.R
+#### This code book documents the code inside the R program - run_analysis.R
 
 ## Setup:
-30 test subjects - Converted to  ```"Subject_num"```
+Human Activity Recognition Using Smartphones Dataset
+
+A group of 30 volunteers performed six activities (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING) wearing a smartphone (Samsung Galaxy S II) on the waist.
+A collection of sensor data was collected.
+
+This process run_analysis.R will read in the raw data and output a tidy dataset of the average of the measurements that involved `mean()` mean or `std()` standard deviation summarized by Activity and subject number
+
 ## Raw data is: 
+####  Source zip located : (https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip)
+#### 
+For each record the following data was provided:
+======================================
+- Triaxial acceleration from the accelerometer (total acceleration) and the estimated body acceleration.
+- Triaxial Angular velocity from the gyroscope. 
+- A 561-feature vector with time and frequency domain variables. 
+- Its activity label. 
+- An identifier of the subject who carried out the experiment.
+
+Raw files used for this analysis
+* `UCI HAR Dataset/train/X_train.txt`
+* `UCI HAR Dataset/train/y_train.txt`
+* `UCI HAR Dataset/train/subjec_train.txt`
+* `UCI HAR Dataset/test/X_test.txt`
+* `UCI HAR Dataset/test/y_test.txt`
+* `UCI HAR Dataset/test/subject_test.txt`
+* `UCI HAR Dataset/activity_labels.txt`
+* `UCI HAR Dataset/features.txt`
+
+Other files from the .zip archive were not used for data analysis.  The README.txt was consulted
 
 ## Process
 #### create data directory if it does not already exit exist
