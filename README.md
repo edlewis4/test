@@ -5,7 +5,16 @@ This repo contains the files for the Coursera - Getting & Cleaning Data project 
 
 * README.md   -  This file - Lists contents of this repo
 * CodeBook.md - The markdown file that describes the process used by the R script `run_analysis.R`
-* run_analysis.R - R script to download/import Human Activity Recognition (HAR) data and calculate the average of variables that related to `std()` and `mean()` for each Activity and Subject number
+* run_analysis.R - R script to download/import Human Activity Recognition (HAR) data and calculate the average of variables that related to `std()` and `mean()` for each Activity and Subject number.   
+
+
+Run  `source("./run_analysis.R")`  to execute the R program.  
+* If the UCI HAR Dataset data does not exist in the workingdirectory, It will download it from https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
+* If it downloads the zip file, it will unzip it to `"./UCI HAR Dataset"` directory
+* It will then automatically execute the remaining commands to read in the data and write out the final tidy dataset "./samsung_HAR_out.txt"
+
+
+ 
 
 
 

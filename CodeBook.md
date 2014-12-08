@@ -94,6 +94,7 @@ Convert `Activity` back to a Factor
 
 ## Write tidy data.frame to output file
 Write final summary table `result` to output file - Sample output shown below <br>
+file out is `./samsung_HAR_out.txt`
 
 Average of variables by 'Activity' and 'Subject_num' <br>
 This is a wide tidy dataset with each column a variable and each row an observation <br>
