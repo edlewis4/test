@@ -36,45 +36,45 @@ Other files from the .zip archive were not used for data analysis.  The README.t
 ## Process
 
 #### Getting Data
-##### Creates data directory inside working directory if it does not already exist
-##### Gets the Zip file data from URL above
-##### Unzips the Zip archive into the workingdirectory `./data` directory
+Creates data directory inside working directory if it does not already exist
+Gets the Zip file data from URL above
+Unzips the Zip archive into the workingdirectory `./data` directory
 
-##### Reads in train related datasets
+Reads in train related datasets
 * `./data/UCI HAR Dataset/train/X_train.txt`        store in `trainx` data.frame
 * `./data/UCI HAR Dataset/train/y_train.txt`        store in `train_y_activity` data.frame
 * `./data/UCI HAR Dataset/train/subjec_train.txt`   store in `train_y_activity` data.frame
 
-##### Reads in test related datasets
+Reads in test related datasets
 * `./data/UCI HAR Dataset/test/X_test.txt`          store in `testx` data.frame
 * `./data/UCI HAR Dataset/test/y_test.txt`          store in `test_y_activity` data.frame
 * `./data/UCI HAR Dataset/test/subject_test.txt`    store in `test_y_activity` data.frame
 
-##### Reads in activity & feature labels datasets
+Reads in activity & feature labels datasets
 * `./data/UCI HAR Dataset/activity_labels.txt`      store in `activitylabels` data.frame
 * `./data/UCI HAR Dataset/features.txt`             store in `featurelabels` data.frame
 
 #### Subsetting data - Choosing only variables with std() and mean()
-##### Converts the `featurelabels` data.frame to a data.table to select necessary mean and std columns
-##### Subset that data.table to get only those variables that have std() or mean() in the feature name
+Converts the `featurelabels` data.frame to a data.table to select necessary mean and std columns
+Subset that data.table to get only those variables that have std() or mean() in the feature name
 
-##### Create subset of training `trainx` and test subjects`testx` datasets- only keeping columns that have std() or mean() data as determined above with the data.table subsetting.
+Create subset of training `trainx` and test subjects`testx` datasets- only keeping columns that have std() or mean() data as determined above with the data.table subsetting.
 
 #### Merge data
-##### Merge all of the Train dataframes into one and set column names - stores in `train` data.frame
-##### Merge all of the Test datasets into one and set column names  - stores in `test` data.frame
+Merge all of the Train dataframes into one and set column names - stores in `train` data.frame
+Merge all of the Test datasets into one and set column names  - stores in `test` data.frame
 
-##### Merge the `test` and `train` dataframes
+Merge the `test` and `train` dataframes
 
 #### Making data descriptive
-##### Use data pulled from the activity_labels.txt file into activitylabels table to change values from numbers to Descriptive activities 
+Use data pulled from the activity_labels.txt file into activitylabels table to change values from numbers to Descriptive activities 
 
-#### Create final summary data.frame with tidy data
-##### Temporarily makes a long form tidy dataset with Subject_num and Activiy - with all other observations under a variable / value  - Stores in `result` data.frame
+Create final summary data.frame with tidy data
+Temporarily makes a long form tidy dataset with Subject_num and Activiy - with all other observations under a variable / value  - Stores in `result` data.frame
 
-##### Create summary by Subject_num and Activity and the mean of all features
+Create summary by Subject_num and Activity and the mean of all features
 
-##### Convert Activity back to a Factor 
+Convert Activity back to a Factor 
 ###### Activity is a factor with 6 levels 
       * WALKING
       * WALKING_UPSTAIRS
@@ -84,7 +84,7 @@ Other files from the .zip archive were not used for data analysis.  The README.t
       * LAYING
 
 ## Write tidy data.frame to output file
-##### Write final summary table `result` to output file - Sample output shown below
+Write final summary table `result` to output file - Sample output shown below
 ```{r}
 > head(result[1:6,1:6])
   Subject_num           Activity tBodyAcc-mean()-X tBodyAcc-mean()-Y tBodyAcc-mean()-Z
