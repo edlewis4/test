@@ -36,27 +36,33 @@ Other files from the .zip archive were not used for data analysis.  The README.t
 ## Process
 
 #### Getting Data
-Creates data directory inside working directory if it does not already exist
-Gets the Zip file data from URL above
+Creates data directory inside working directory if it does not already exist <br>
+Gets the Zip file data from URL above<br>
 Unzips the Zip archive into the workingdirectory `./data` directory
 
 Reads in train related datasets
-* `./data/UCI HAR Dataset/train/X_train.txt`        store in `trainx` data.frame
-* `./data/UCI HAR Dataset/train/y_train.txt`        store in `train_y_activity` data.frame
-* `./data/UCI HAR Dataset/train/subjec_train.txt`   store in `train_y_activity` data.frame
+* `./data/UCI HAR Dataset/train/X_train.txt`        : store in `trainx` data.frame
+* `./data/UCI HAR Dataset/train/y_train.txt`        : store in `train_y_activity` data.frame
+* `./data/UCI HAR Dataset/train/subjec_train.txt`   : store in `train_y_activity` data.frame
 
 Reads in test related datasets
-* `./data/UCI HAR Dataset/test/X_test.txt`          store in `testx` data.frame
-* `./data/UCI HAR Dataset/test/y_test.txt`          store in `test_y_activity` data.frame
-* `./data/UCI HAR Dataset/test/subject_test.txt`    store in `test_y_activity` data.frame
+* `./data/UCI HAR Dataset/test/X_test.txt`          : store in `testx` data.frame
+* `./data/UCI HAR Dataset/test/y_test.txt`          : store in `test_y_activity` data.frame
+* `./data/UCI HAR Dataset/test/subject_test.txt`    : store in `test_y_activity` data.frame
 
 Reads in activity & feature labels datasets
-* `./data/UCI HAR Dataset/activity_labels.txt`      store in `activitylabels` data.frame
-* `./data/UCI HAR Dataset/features.txt`             store in `featurelabels` data.frame
+* `./data/UCI HAR Dataset/activity_labels.txt`      : store in `activitylabels` data.frame
+* `./data/UCI HAR Dataset/features.txt`             : store in `featurelabels` data.frame
 
 #### Subsetting data - Choosing only variables with std() and mean()
-Converts the `featurelabels` data.frame to a data.table to select necessary mean and std columns
-Subset that data.table to get only those variables that have std() or mean() in the feature name
+Converts the `featurelabels` data.frame to a data.table to select necessary mean and std columns <br>
+Subset that data.table to get only those variables that have std() or mean() in the feature name<br>
+
+determining which variables to keep that referenced mean() or std()
+I kept any variablues that contained the mean() or std() within the name.  e.g `tBodyAcc-mean()-X` , `tBodyAcc-std()-Y`, `tBodyAccJerk-std()-X`, `fBodyAccJerk-mean()-Z`
+
+I did not to keep variables that had the word mean in them that look like they were used in other calculations.  e.g `angle(tBodyAccMean,gravity)`, `angle(tBodyAccJerkMean),gravityMean)`, `fBodyBodyGyroMag-meanFreq()`, `fBodyAccMag-meanFreq()`
+
 
 Create subset of training `trainx` and test subjects`testx` datasets- only keeping columns that have std() or mean() data as determined above with the data.table subsetting.
 
