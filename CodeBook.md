@@ -13,18 +13,18 @@
 #### Read in necessary datasets
 
 #### Read in train datasets
-*```./data/UCI HAR Dataset/train/X_train.txt```
-*```./data/UCI HAR Dataset/train/y_train.txt```
-*```./data/UCI HAR Dataset/train/subjec_train.txt```
+* `./data/UCI HAR Dataset/train/X_train.txt`
+* `./data/UCI HAR Dataset/train/y_train.txt`
+* `./data/UCI HAR Dataset/train/subjec_train.txt`
 
 #### Read in test datasets
-*`./data/UCI HAR Dataset/test/X_test.txt`
-*`./data/UCI HAR Dataset/test/y_test.txt`
-*`./data/UCI HAR Dataset/test/subject_test.txt`
+* `./data/UCI HAR Dataset/test/X_test.txt`
+* `./data/UCI HAR Dataset/test/y_test.txt`
+* `./data/UCI HAR Dataset/test/subject_test.txt`
 
 #### Read in activity & feature labels datasets
-*`./data/UCI HAR Dataset/activity_labels.txt`
-*`./data/UCI HAR Dataset/features.txt`
+* `./data/UCI HAR Dataset/activity_labels.txt`
+* `./data/UCI HAR Dataset/features.txt`
 
 #### convert the featurelabels to a datatable to select necessary mean and std columns
 #### subset data.table to get only those items that have std() or mean() in the feature name
