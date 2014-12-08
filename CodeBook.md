@@ -36,9 +36,9 @@ Other files from the .zip archive were not used for data analysis.  The README.t
 ## Process
 
 #### Getting Data
-Creates data directory inside working directory if it does not already exist <br>
-Gets the Zip file data from URL above<br>
-Unzips the Zip archive into the workingdirectory `./data` directory
+Create data directory inside working directory if it does not already exist <br>
+Get the Zip file data from URL above<br>
+Unzip the Zip archive into the workingdirectory `./data` directory
 
 Reads in train related datasets
 * `./data/UCI HAR Dataset/train/X_train.txt`        : store in `trainx` data.frame
@@ -56,18 +56,18 @@ Reads in activity & feature labels datasets
 
 #### Subsetting data - Choosing only variables with std() and mean()
 Converts the `featurelabels` data.frame to a data.table to select necessary mean and std columns <br>
-Subset that data.table to get only those variables that have std() or mean() in the feature name<br>
+Subset that data.table to get only those variables that have `std()` or `mean()` in the feature name<br>
 
-determining which variables to keep that referenced mean() or std()
-I kept any variablues that contained the mean() or std() within the name.  e.g `tBodyAcc-mean()-X` , `tBodyAcc-std()-Y`, `tBodyAccJerk-std()-X`, `fBodyAccJerk-mean()-Z`
+###### Determining which variables to keep that referenced mean() or std()
+I kept any variablues that contained the mean() or std() within the name.  e.g `tBodyAcc-mean()-X` , `tBodyAcc-std()-Y`, `tBodyAccJerk-std()-X`, `fBodyAccJerk-mean()-Z`, ...
 
-I did not to keep variables that had the word mean in them that look like they were used in other calculations.  e.g `angle(tBodyAccMean,gravity)`, `angle(tBodyAccJerkMean),gravityMean)`, `fBodyBodyGyroMag-meanFreq()`, `fBodyAccMag-meanFreq()`
+I did not to keep variables that just had the word mean in them that were used for other calculations.  e.g `angle(tBodyAccMean,gravity)`, `angle(tBodyAccJerkMean),gravityMean)`, `fBodyBodyGyroMag-meanFreq()`, `fBodyAccMag-meanFreq()`, ...
 
 
-Create subset of training `trainx` and test subjects`testx` datasets- only keeping columns that have std() or mean() data as determined above with the data.table subsetting.
+Created subset of training `trainx` and test subjects`testx` datasets- only keeping columns that have `std()` or `mean()` data as determined above with the data.table subsetting.
 
 #### Merge data
-Merge all of the Train dataframes into one and set column names - stores in `train` data.frame
+Merge all of the Train dataframes into one and set column names - stores in `train` data.frame <br>
 Merge all of the Test datasets into one and set column names  - stores in `test` data.frame
 
 Merge the `test` and `train` dataframes
@@ -75,22 +75,25 @@ Merge the `test` and `train` dataframes
 #### Making data descriptive
 Use data pulled from the activity_labels.txt file into activitylabels table to change values from numbers to Descriptive activities 
 
-Create final summary data.frame with tidy data
-Temporarily makes a long form tidy dataset with Subject_num and Activiy - with all other observations under a variable / value  - Stores in `result` data.frame
+Create final summary data.frame with tidy data <br>
+Temporarily makes a long form tidy dataset with `Subject_num` and `Activiy` - with all other observations under a variable / value  - Stores in `result` data.frame
 
-Create summary by Subject_num and Activity and the mean of all features
+Create summary by `Subject_num` and `Activity` and the mean of all features
 
-Convert Activity back to a Factor 
+Convert `Activity` back to a Factor 
 ###### Activity is a factor with 6 levels 
-      * WALKING
-      * WALKING_UPSTAIRS
-      * WALKING_DOWNSTAIRS
-      * SITTING
-      * STANDING
-      * LAYING
+* WALKING
+* WALKING_UPSTAIRS
+* WALKING_DOWNSTAIRS
+* SITTING
+* STANDING
+* LAYING
 
 ## Write tidy data.frame to output file
-Write final summary table `result` to output file - Sample output shown below
+Write final summary table `result` to output file - Sample output shown below <br>
+
+Average of variables by 'Activity' and 'Subject_num' <br>
+This is a wide tidy dataset with each column a variable and each row an observation
 ```{r}
 > head(result[1:6,1:6])
   Subject_num           Activity tBodyAcc-mean()-X tBodyAcc-mean()-Y tBodyAcc-mean()-Z
