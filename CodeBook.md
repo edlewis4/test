@@ -36,23 +36,23 @@ Other files from the .zip archive were not used for data analysis.  The README.t
 ## Process
 
 #### Getting Data
-Create data directory inside working directory if it does not already exist <br>
+
 Get the Zip file data from URL above<br>
-Unzip the Zip archive into the workingdirectory `./data` directory
+Unzip the Zip archive into the workingdirectory `./` 
 
 Reads in train related datasets
-* `./data/UCI HAR Dataset/train/X_train.txt`        : store in `trainx` data.frame
-* `./data/UCI HAR Dataset/train/y_train.txt`        : store in `train_y_activity` data.frame
-* `./data/UCI HAR Dataset/train/subjec_train.txt`   : store in `train_y_activity` data.frame
+* `./UCI HAR Dataset/train/X_train.txt`        : store in `trainx` data.frame
+* `./UCI HAR Dataset/train/y_train.txt`        : store in `train_y_activity` data.frame
+* `./UCI HAR Dataset/train/subjec_train.txt`   : store in `train_y_activity` data.frame
 
 Reads in test related datasets
-* `./data/UCI HAR Dataset/test/X_test.txt`          : store in `testx` data.frame
-* `./data/UCI HAR Dataset/test/y_test.txt`          : store in `test_y_activity` data.frame
-* `./data/UCI HAR Dataset/test/subject_test.txt`    : store in `test_y_activity` data.frame
+* `./UCI HAR Dataset/test/X_test.txt`          : store in `testx` data.frame
+* `./UCI HAR Dataset/test/y_test.txt`          : store in `test_y_activity` data.frame
+* `./UCI HAR Dataset/test/subject_test.txt`    : store in `test_y_activity` data.frame
 
 Reads in activity & feature labels datasets
-* `./data/UCI HAR Dataset/activity_labels.txt`      : store in `activitylabels` data.frame
-* `./data/UCI HAR Dataset/features.txt`             : store in `featurelabels` data.frame
+* `./UCI HAR Dataset/activity_labels.txt`      : store in `activitylabels` data.frame
+* `./UCI HAR Dataset/features.txt`             : store in `featurelabels` data.frame
 
 #### Subsetting data - Choosing only variables with std() and mean()
 Converts the `featurelabels` data.frame to a data.table to select necessary mean and std columns <br>
@@ -64,7 +64,9 @@ I kept any variablues that contained the mean() or std() within the name.
 
 I did not to keep variables that just had the word mean in them that were used for other calculations.  e.g `angle(tBodyAccMean,gravity)`, `angle(tBodyAccJerkMean),gravityMean)`, `fBodyBodyGyroMag-meanFreq()`, `fBodyAccMag-meanFreq()`, ...
 
+I end up with 66 variables of the original set of 561 
 
+<br>
 Created subset of training `trainx` and test subjects`testx` datasets- only keeping columns that have `std()` or `mean()` data as determined above with the data.table subsetting.
 
 #### Merge data
@@ -73,11 +75,11 @@ Merge all of the Test datasets into one and set column names  - stores in `test`
 
 Merge the `test` and `train` dataframes
 
-#### Making data descriptive
+#### Make data descriptive
 Use data pulled from the activity_labels.txt file into activitylabels table to change values from numbers to Descriptive activities 
 
 Create final summary data.frame with tidy data <br>
-Temporarily makes a long form tidy dataset with `Subject_num` and `Activiy` - with all other observations under a variable / value  - Stores in `result` data.frame
+Temporarily make a long form tidy dataset with `Subject_num` and `Activiy` - with all other observations under a variable / value  - Stores in `result` data.frame
 
 Create summary by `Subject_num` and `Activity` and the mean of all features
 
@@ -94,7 +96,8 @@ Convert `Activity` back to a Factor
 Write final summary table `result` to output file - Sample output shown below <br>
 
 Average of variables by 'Activity' and 'Subject_num' <br>
-This is a wide tidy dataset with each column a variable and each row an observation
+This is a wide tidy dataset with each column a variable and each row an observation <br>
+The final datset is 180 observations x 68 variables -  30 test subjects x 6 Activities = 180 observations.  
 ```{r}
 > head(result[1:6,1:6])
   Subject_num           Activity tBodyAcc-mean()-X tBodyAcc-mean()-Y tBodyAcc-mean()-Z
